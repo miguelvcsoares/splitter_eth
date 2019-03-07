@@ -15,7 +15,7 @@ contract Splitter {
 	}
 
 	mapping (address => uint) public personId;
-    Person[] public people;
+    	Person[] public people;
 
 
 	event EthSent(address recipient, uint amount, bool sent);
@@ -57,6 +57,5 @@ contract Splitter {
 	function splitBalance() public {
 		totalBalance = address(this).balance;
 		uint valueToSplit = totalBalance/(people.length);
-	}
-	
+	}	
 }
