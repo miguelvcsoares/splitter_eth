@@ -1,4 +1,4 @@
-Splitter
+# Splitter
 
 A smart contract named Splitter whereby:
 
