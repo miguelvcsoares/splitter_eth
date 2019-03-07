@@ -16,7 +16,7 @@ contract Splitter {
 	}
 
 	mapping (address => uint) public personId;
-    Person[] public people;
+    	Person[] public people;
 
 
 	event EthSent(address recipient, uint amount, bool sent);
@@ -62,32 +62,3 @@ contract Splitter {
 	}
 	
 }
-
-
-	mapping (address => uint) public memberId;
-    Member[] public members;
-
-    struct Member {
-        address member;
-        string name;
-        uint memberSince;
-    }
-
-    function addMember(address targetMember, string memory memberName) onlyOwner public {
-        uint id = memberId[targetMember];
-        if (id == 0) {
-            memberId[targetMember] = members.length;
-            id = members.length++;
-        }
-
-        members[id] = Member({member: targetMember, memberSince: now, name: memberName});
-        emit MembershipChanged(targetMember, true);
-    }
-
-
-
-
-
-
-
-
