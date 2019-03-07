@@ -6,9 +6,8 @@ pragma solidity ^0.4.19;
 contract Splitter {
 
 	uint public totalBalance;
-	uint counter;
+	address public owner;
     
-
 	struct Person {
 		address person;
 		string name;
@@ -27,12 +26,12 @@ contract Splitter {
 		addPerson(address(1),"Carol");
 	}
 
-	modifier onlyOwner() { 
-		require (owner = msg.sender); 
-		_; 
-	}
+// 	modifier onlyOwner() { 
+// 		require(owner = msg.sender); 
+// 		_; 
+// 	}
 	
-	function addPerson(address _personAddr, string memory _personName) onlyOwner public {
+	function addPerson(address _personAddr, string memory _personName) public {
         uint id = personId[_personAddr];
         if (id == 0) {
             personId[_personAddr] = people.length;
@@ -41,53 +40,23 @@ contract Splitter {
         people[id] = Person({person: _personAddr, name: _personName, balance: 0});
     }
 
-	function sendEth(uint _value) payable onlyOwner public {
-		require (balances[msg.sender] >= msg.value);
+	function sendEth(uint _value) payable public {
+		require (msg.sender.balance >= msg.value);
 		
 		uint amount = msg.value;
-        balances[msg.sender] -= amount;
+        msg.sender.balance  -= amount;
 		totalBalance += amount;
        	emit EthSent(msg.sender, amount, true);  
 	}
 	
 	
-	function balanceOf(address _addr) public returns(uint) {
-		return balances[_addr]; 
+	function balanceOf() public returns(uint) {
+		return msg.sender.balance; 
 	}	
 
-
-	function splitBalance() public onlyOwner {
+	function splitBalance() public {
 		totalBalance = address(this).balance;
 		uint valueToSplit = totalBalance/(people.length);
 	}
 	
 }
-
-
-	mapping (address => uint) public memberId;
-    Member[] public members;
-
-    struct Member {
-        address member;
-        string name;
-        uint memberSince;
-    }
-
-    function addMember(address targetMember, string memory memberName) onlyOwner public {
-        uint id = memberId[targetMember];
-        if (id == 0) {
-            memberId[targetMember] = members.length;
-            id = members.length++;
-        }
-
-        members[id] = Member({member: targetMember, memberSince: now, name: memberName});
-        emit MembershipChanged(targetMember, true);
-    }
-
-
-
-
-
-
-
-
