@@ -22,8 +22,8 @@ contract Splitter {
 
 	
 	constructor() public {
-        owner = msg.sender;
-        addPerson(owner, "Alice");
+		owner = msg.sender;
+		addPerson(owner, "Alice");
 	}
 
 	modifier onlyOwner() { 
@@ -36,10 +36,10 @@ contract Splitter {
 		if (id == 0) {
 			personId[_personAddr] = people.length;
 			id = people.length++;
-         }
+		}
 		people[id] = Person({person: _personAddr, name: _personName});
 		emit LogPersonAdded(_personAddr, true);
-     }
+	}
 
 	function sendEth() payable public onlyOwner {
 		require (msg.sender.balance >= msg.value);
@@ -48,7 +48,6 @@ contract Splitter {
 		emit LogEthSent(msg.sender, msg.value, true);  
 	}
 	
-
 	function splitBalance() public onlyOwner {
 		require (totalBalance > 0);
 	
@@ -56,7 +55,6 @@ contract Splitter {
 		
 		for (uint i = 1; i < people.length; i++) {
 			people[i].person.transfer(valueToSplit);
-        }
+		}
 	}
-	
 }
