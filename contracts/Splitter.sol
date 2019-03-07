@@ -14,15 +14,16 @@ contract Splitter {
 	}
 
 	mapping (address => uint) public personId;
-    Person[] public people;
+	Person[] public people;
 
 
-	event EthSent(address recipient, uint amount, bool sent);
-	event personAdded(address _address, bool isAdded);
+	event LogEthSent(address recipient, uint amount, bool sent);
+	event LogPersonAdded(address _address, bool isAdded);
 
 	
-	constructor() public payable {
-	    owner == msg.sender;
+	constructor() public {
+        owner = msg.sender;
+        addPerson(owner, "Alice");
 	}
 
 	modifier onlyOwner() { 
@@ -31,40 +32,30 @@ contract Splitter {
 	}
 	
 	function addPerson(address _personAddr, string memory _personName) public {
-        uint id = personId[_personAddr];
-        if (id == 0) {
-            personId[_personAddr] = people.length;
-            id = people.length++;
-        }
-        people[id] = Person({person: _personAddr, name: _personName});
-        emit personAdded(_personAddr, true);
-    }
+		uint id = personId[_personAddr];
+		if (id == 0) {
+			personId[_personAddr] = people.length;
+			id = people.length++;
+         }
+		people[id] = Person({person: _personAddr, name: _personName});
+		emit LogPersonAdded(_personAddr, true);
+     }
 
-	function sendEth(uint _amount) payable public {
-		//require (msg.sender.balance >= msg.value);
-		require (msg.sender.balance >= _amount);
-		
-		//uint amount = msg.value;
-        //msg.sender.balance  -= _amount;
-		totalBalance += _amount;
-       	emit EthSent(msg.sender, _amount, true);  
+	function sendEth() payable public onlyOwner {
+		require (msg.sender.balance >= msg.value);
+
+		totalBalance += msg.value;
+		emit LogEthSent(msg.sender, msg.value, true);  
 	}
 	
-	function totalBalance() public view returns (uint) {
-	    return totalBalance;
-	}
-	
-	function balanceOf() public view returns(uint) {
-		return msg.sender.balance; 
-	}	
 
 	function splitBalance() public onlyOwner {
 		require (totalBalance > 0);
 	
-	    uint valueToSplit = totalBalance/(people.length - 1);
+		uint valueToSplit = totalBalance/(people.length - 1);
 		
-		for (uint i = 1; i < people.length - 1; i++) {
-	        people[i].person.transfer(valueToSplit);
+		for (uint i = 1; i < people.length; i++) {
+			people[i].person.transfer(valueToSplit);
         }
 	}
 	
