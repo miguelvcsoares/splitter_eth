@@ -60,5 +60,4 @@ contract Splitter {
 		totalBalance = address(this).balance;
 		uint valueToSplit = totalBalance/(people.length);
 	}
-	
 }
