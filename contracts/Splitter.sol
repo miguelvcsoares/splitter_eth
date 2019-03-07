@@ -44,18 +44,22 @@ contract Splitter {
 		require (msg.sender.balance >= msg.value);
 		
 		uint amount = msg.value;
-        msg.sender.balance  -= amount;
+        //msg.sender.balance  -= amount;
 		totalBalance += amount;
        	emit EthSent(msg.sender, amount, true);  
 	}
-	
-	
+		
 	function balanceOf() public returns(uint) {
 		return msg.sender.balance; 
 	}	
 
 	function splitBalance() public {
-		totalBalance = address(this).balance;
+		require(totalBalance > 0);
+
 		uint valueToSplit = totalBalance/(people.length);
+		totalBalance = 0;
+		msg.sender.transfer(valueToSplit);
+
+
 	}	
 }
