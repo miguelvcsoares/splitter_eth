@@ -2,7 +2,7 @@ const Splitter = artifacts.require('./Splitter.sol')
 
 contract('Splitter', (accounts) => {
   beforeEach(async () => {
-    this.Splitter = await Splitter.deployed()
+    this.Splitter = await Splitter.new()
   })
 
   it('deploys successfully', async () => {
