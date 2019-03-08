@@ -5,46 +5,45 @@ pragma solidity >=0.4.25;
  */
 contract Splitter {
 
-	uint public totalBalance;
 	address public owner;
     
-	address[2] public addr;
-	mapping (address => bool) withdraw;
+	mapping (address => uint) splitAmount;
+	mapping (address => bool) retrieveDone;
 
-
-	event LogEthSent(address recipient, uint amount, bool sent);
-	event LogPersonAdded(address _address, bool isAdded);
+	event LogSplit(address _address1, address _address2, uint amount);
 	
-	constructor(address[2] memory addrs) public {
+	constructor() public {
 	    owner = msg.sender;
-	    require(addrs[0] != address(0));
-		require(addrs[1] != address(0));
-		addr = addrs;
 	}
 
 	modifier onlyOwner() { 
 		require(msg.sender == owner); 
 		_; 
 	}
+	
+	function splitBalance(address addr1, address addr2) onlyOwner public payable {
+	    require(msg.value > 0);
+		require(addr1 != address(0));
+		require(addr2 != address(0));
 
-	function sendEth() payable public onlyOwner {
-		require(msg.sender.balance >= msg.value);
-
-		totalBalance += msg.value;
-		emit LogEthSent(msg.sender, msg.value, true);  
+        uint amountToSend1 = msg.value/2;
+        uint amountToSend2 = msg.value/2;
+        splitAmount[addr1] = amountToSend1;
+        splitAmount[addr2] = amountToSend2;
+        
+        emit LogSplit(addr1, addr2, msg.value);
 	}
 	
-	function splitBalance() public {
+	function retrieve() public payable returns (bool) {
 	    require(msg.sender != owner);
-	    require(!withdraw[msg.sender], "Already withdrawn");
-		
-		uint valueToSplit = totalBalance/addr.length;
-		
-		if(totalBalance > 0) {
-            totalBalance -= valueToSplit;
-	        msg.sender.transfer(valueToSplit);
-	        withdraw[msg.sender] = true;
-		}
+	    require(!retrieveDone[msg.sender], "Already withdrawn");
+
+    	uint amount = splitAmount[msg.sender];
+        splitAmount[msg.sender] = 0; 
+        msg.sender.transfer(amount);
+        retrieveDone[msg.sender] = true;
+        
+        return true;
 	}
 
 	function kill() onlyOwner public returns (bool) {
