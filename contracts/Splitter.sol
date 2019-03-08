@@ -17,18 +17,18 @@ contract Splitter {
 	
 	constructor(address[2] memory addrs) public {
 	    owner = msg.sender;
-	    require (addrs[0] != address(0));
+	    require(addrs[0] != address(0));
 		require(addrs[1] != address(0));
 		addr = addrs;
 	}
 
 	modifier onlyOwner() { 
-		require (msg.sender == owner); 
+		require(msg.sender == owner); 
 		_; 
 	}
 
 	function sendEth() payable public onlyOwner {
-		require (msg.sender.balance >= msg.value);
+		require(msg.sender.balance >= msg.value);
 
 		totalBalance += msg.value;
 		emit LogEthSent(msg.sender, msg.value, true);  
@@ -46,4 +46,9 @@ contract Splitter {
 	        withdraw[msg.sender] = true;
 		}
 	}
+
+	function kill() onlyOwner public returns (bool) {
+    	selfdestruct(msg.sender);
+    	return true;
+    }
 }
