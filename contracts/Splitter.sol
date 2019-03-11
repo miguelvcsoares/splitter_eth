@@ -1,15 +1,17 @@
-pragma solidity >=0.4.25;
+pragma solidity >=0.4.22 <0.6.0;
 
-/**
- * The Splitter contract does this and that...
- */
+import "./SafeMath.sol";
+
 contract Splitter {
 
+	using SafeMath for uint;
 	address public owner;
 
-	mapping (address => uint) splitAmount;
+	mapping (address => uint) owedBalances;
 
-	event LogSplit(address _address1, address _address2, uint amount);
+	event LogSplit(address indexed caller, address indexed _address1, address indexed _address2, uint amount);
+	event LogEtherRetrieved(address caller, uint amount);
+	
 	
 	constructor() public {
 		owner = msg.sender;
@@ -20,27 +22,26 @@ contract Splitter {
 		_; 
 	}
 	
-	function splitBalance(address addr1, address addr2) onlyOwner public payable {
-		require(msg.value > 0);
-		require(msg.value % 2 == 0);
+	function splitBalance(address addr1, address addr2) public payable {
 		require(addr1 != address(0));
 		require(addr2 != address(0));
 
 		uint amountToSend = msg.value/2;
-		splitAmount[addr1] += amountToSend;
-		splitAmount[addr2] += amountToSend;
-		
-		emit LogSplit(addr1, addr2, msg.value);
+
+		if(msg.value % 2 == 1) owedBalances[msg.sender] = owedBalances[msg.sender].add(1);
+		owedBalances[addr1] = owedBalances[addr1].add(amountToSend);
+		owedBalances[addr2] = owedBalances[addr2].add(amountToSend);
+
+		emit LogSplit(msg.sender, addr1, addr2, msg.value);
 	}
 	
-	function retrieve() public payable returns (bool) {
-		require(msg.sender != owner);
+	function retrieve() public payable {
 
-		uint amount = splitAmount[msg.sender];
-		splitAmount[msg.sender] = 0; 
+		uint amount = owedBalances[msg.sender];
+		owedBalances[msg.sender] = owedBalances[msg.sender].sub(amount); 
 		msg.sender.transfer(amount);
 
-		return true;
+		emit LogEtherRetrieved(msg.sender, amount);
 	}
 
 	function kill() onlyOwner public returns (bool) {
