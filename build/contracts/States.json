@@ -1,0 +1,2336 @@
+{
+  "contractName": "States",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "pauseContract",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "resumeContract",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "killContract",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060146101000a81548160ff021916908360028111156100eb57fe5b021790555061072f806100ff6000396000f3fe608060405260043610610083576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631c02708d14610088578063439766ce146100b7578063715018a6146100e65780638da5cb5b146100fd5780638f32d59b14610154578063c4bc5da514610183578063f2fde38b146101b2575b600080fd5b34801561009457600080fd5b5061009d610203565b604051808215151515815260200191505060405180910390f35b3480156100c357600080fd5b506100cc6102e0565b604051808215151515815260200191505060405180910390f35b3480156100f257600080fd5b506100fb6103bc565b005b34801561010957600080fd5b5061011261048e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561016057600080fd5b506101696104b7565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b5061019861050e565b604051808215151515815260200191505060405180910390f35b3480156101be57600080fd5b50610201600480360360208110156101d557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506105ea565b005b600061020d6104b7565b151561021857600080fd5b6001600281111561022557fe5b600060149054906101000a900460ff16600281111561024057fe5b1415156102b5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601a8152602001807f4572726f723a20636f6e7472616374206e6f742070617573656400000000000081525060200191505060405180910390fd5b6002600060146101000a81548160ff021916908360028111156102d457fe5b02179055506001905090565b60008060028111156102ee57fe5b600060149054906101000a900460ff16600281111561030957fe5b14151561037e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4572726f723a20636f6e747261637420706175736564206f72206b696c6c656481525060200191505060405180910390fd5b6103866104b7565b151561039157600080fd5b6001600060146101000a81548160ff021916908360028111156103b057fe5b02179055506001905090565b6103c46104b7565b15156103cf57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006105186104b7565b151561052357600080fd5b6001600281111561053057fe5b600060149054906101000a900460ff16600281111561054b57fe5b1415156105c0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601a8152602001807f4572726f723a20636f6e7472616374206e6f742070617573656400000000000081525060200191505060405180910390fd5b60008060146101000a81548160ff021916908360028111156105de57fe5b02179055506001905090565b6105f26104b7565b15156105fd57600080fd5b61060681610609565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561064557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820c67386cb785bc1faeb87e6002294efc738d4f3fd5cdd7b29d2ccd98115dd69940029",
+  "deployedBytecode": "0x608060405260043610610083576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631c02708d14610088578063439766ce146100b7578063715018a6146100e65780638da5cb5b146100fd5780638f32d59b14610154578063c4bc5da514610183578063f2fde38b146101b2575b600080fd5b34801561009457600080fd5b5061009d610203565b604051808215151515815260200191505060405180910390f35b3480156100c357600080fd5b506100cc6102e0565b604051808215151515815260200191505060405180910390f35b3480156100f257600080fd5b506100fb6103bc565b005b34801561010957600080fd5b5061011261048e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561016057600080fd5b506101696104b7565b604051808215151515815260200191505060405180910390f35b34801561018f57600080fd5b5061019861050e565b604051808215151515815260200191505060405180910390f35b3480156101be57600080fd5b50610201600480360360208110156101d557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506105ea565b005b600061020d6104b7565b151561021857600080fd5b6001600281111561022557fe5b600060149054906101000a900460ff16600281111561024057fe5b1415156102b5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601a8152602001807f4572726f723a20636f6e7472616374206e6f742070617573656400000000000081525060200191505060405180910390fd5b6002600060146101000a81548160ff021916908360028111156102d457fe5b02179055506001905090565b60008060028111156102ee57fe5b600060149054906101000a900460ff16600281111561030957fe5b14151561037e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4572726f723a20636f6e747261637420706175736564206f72206b696c6c656481525060200191505060405180910390fd5b6103866104b7565b151561039157600080fd5b6001600060146101000a81548160ff021916908360028111156103b057fe5b02179055506001905090565b6103c46104b7565b15156103cf57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60006105186104b7565b151561052357600080fd5b6001600281111561053057fe5b600060149054906101000a900460ff16600281111561054b57fe5b1415156105c0576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601a8152602001807f4572726f723a20636f6e7472616374206e6f742070617573656400000000000081525060200191505060405180910390fd5b60008060146101000a81548160ff021916908360028111156105de57fe5b02179055506001905090565b6105f26104b7565b15156105fd57600080fd5b61060681610609565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561064557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820c67386cb785bc1faeb87e6002294efc738d4f3fd5cdd7b29d2ccd98115dd69940029",
+  "sourceMap": "59:803:4:-;;;401:58;8:9:-1;5:2;;;30:1;27;20:12;5:2;401:58:4;533:10:1;524:6;;:19;;;;;;;;;;;;;;;;;;591:6;;;;;;;;;;;558:40;;587:1;558:40;;;;;;;;;;;;440:12:4;432:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;59:803;;;;;;",
+  "deployedSourceMap": "59:803:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;732:127;;8:9:-1;5:2;;;30:1;27;20:12;5:2;732:127:4;;;;;;;;;;;;;;;;;;;;;;;;;;;465;;8:9:-1;5:2;;;30:1;27;20:12;5:2;465:127:4;;;;;;;;;;;;;;;;;;;;;;;;;;;1432:137:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1432:137:1;;;;;;668:77;;8:9:-1;5:2;;;30:1;27;20:12;5:2;668:77:1;;;;;;;;;;;;;;;;;;;;;;;;;;;988:90;;8:9:-1;5:2;;;30:1;27;20:12;5:2;988:90:1;;;;;;;;;;;;;;;;;;;;;;;;;;;598:128:4;;8:9:-1;5:2;;;30:1;27;20:12;5:2;598:128:4;;;;;;;;;;;;;;;;;;;;;;;;;;;1740:107:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1740:107:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1740:107:1;;;;;;;;;;;;;;;;;;;;;;732:127:4;795:4;872:9:1;:7;:9::i;:::-;864:18;;;;;;;;334:12:4;325:21;;;;;;;;:5;;;;;;;;;;;:21;;;;;;;;;317:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;819:12;811:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;848:4;841:11;;732:127;:::o;465:::-;528:4;212:12;203:21;;;;;;;;:5;;;;;;;;;;;:21;;;;;;;;;195:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;872:9:1;:7;:9::i;:::-;864:18;;;;;;;;552:12:4;544:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;581:4;574:11;;465:127;:::o;1432:137:1:-;872:9;:7;:9::i;:::-;864:18;;;;;;;;1530:1;1493:40;;1514:6;;;;;;;;;;;1493:40;;;;;;;;;;;;1560:1;1543:6;;:19;;;;;;;;;;;;;;;;;;1432:137::o;668:77::-;706:7;732:6;;;;;;;;;;;725:13;;668:77;:::o;988:90::-;1028:4;1065:6;;;;;;;;;;;1051:20;;:10;:20;;;1044:27;;988:90;:::o;598:128:4:-;662:4;872:9:1;:7;:9::i;:::-;864:18;;;;;;;;334:12:4;325:21;;;;;;;;:5;;;;;;;;;;;:21;;;;;;;;;317:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;686:12;678:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;715:4;708:11;;598:128;:::o;1740:107:1:-;872:9;:7;:9::i;:::-;864:18;;;;;;;;1812:28;1831:8;1812:18;:28::i;:::-;1740:107;:::o;1991:183::-;2084:1;2064:22;;:8;:22;;;;2056:31;;;;;;;;2131:8;2102:38;;2123:6;;;;;;;;;;;2102:38;;;;;;;;;;;;2159:8;2150:6;;:17;;;;;;;;;;;;;;;;;;1991:183;:::o",
+  "source": "pragma solidity >=0.4.22 <0.6.0;\n\nimport \"./Ownable.sol\";\n\ncontract States is Ownable {\n    \n    enum State {Active, Paused, Killed}\n    State private state;\n\n    modifier onlyIfActive {\n        require(state == State.Active, \"Error: contract paused or killed\");\n        _;\n    }\n\n    modifier onlyIfPaused {\n        require(state == State.Paused, \"Error: contract not paused\");\n        _;\n    }\n\n    constructor() public {\n        state = State.Active;\n    }\n\n    function pauseContract() public onlyIfActive onlyOwner returns(bool) {\n        state = State.Paused;\n        return true;\n    }\n\n    function resumeContract() public onlyOwner onlyIfPaused returns(bool) {\n        state = State.Active;\n        return true;\n    }\n\n    function killContract() public onlyOwner onlyIfPaused returns (bool) {\n        state = State.Killed;\n        return true;\n    }\n\n}\n",
+  "sourcePath": "/Users/miguelsoares/Projects/Training/Blockchain/b9Labs/Splitter/contracts/States.sol",
+  "ast": {
+    "absolutePath": "/Users/miguelsoares/Projects/Training/Blockchain/b9Labs/Splitter/contracts/States.sol",
+    "exportedSymbols": {
+      "States": [
+        523
+      ]
+    },
+    "id": 524,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 429,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:4"
+      },
+      {
+        "absolutePath": "/Users/miguelsoares/Projects/Training/Blockchain/b9Labs/Splitter/contracts/Ownable.sol",
+        "file": "./Ownable.sol",
+        "id": 430,
+        "nodeType": "ImportDirective",
+        "scope": 524,
+        "sourceUnit": 166,
+        "src": "34:23:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 431,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 165,
+              "src": "78:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$165",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 432,
+            "nodeType": "InheritanceSpecifier",
+            "src": "78:7:4"
+          }
+        ],
+        "contractDependencies": [
+          165
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 523,
+        "linearizedBaseContracts": [
+          523,
+          165
+        ],
+        "name": "States",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "States.State",
+            "id": 436,
+            "members": [
+              {
+                "id": 433,
+                "name": "Active",
+                "nodeType": "EnumValue",
+                "src": "109:6:4"
+              },
+              {
+                "id": 434,
+                "name": "Paused",
+                "nodeType": "EnumValue",
+                "src": "117:6:4"
+              },
+              {
+                "id": 435,
+                "name": "Killed",
+                "nodeType": "EnumValue",
+                "src": "125:6:4"
+              }
+            ],
+            "name": "State",
+            "nodeType": "EnumDefinition",
+            "src": "97:35:4"
+          },
+          {
+            "constant": false,
+            "id": 438,
+            "name": "state",
+            "nodeType": "VariableDeclaration",
+            "scope": 523,
+            "src": "137:19:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_State_$436",
+              "typeString": "enum States.State"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 437,
+              "name": "State",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 436,
+              "src": "137:5:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_State_$436",
+                "typeString": "enum States.State"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 449,
+              "nodeType": "Block",
+              "src": "185:94:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_State_$436",
+                          "typeString": "enum States.State"
+                        },
+                        "id": 444,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 441,
+                          "name": "state",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 438,
+                          "src": "203:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 442,
+                            "name": "State",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 436,
+                            "src": "212:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                              "typeString": "type(enum States.State)"
+                            }
+                          },
+                          "id": 443,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "Active",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "212:12:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "src": "203:21:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4572726f723a20636f6e747261637420706175736564206f72206b696c6c6564",
+                        "id": 445,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "226:34:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_2cf29bbca55fdaab4ca1bb85596a0b2d1b0a4bd3ee3de4f4a9d9c5cecf336636",
+                          "typeString": "literal_string \"Error: contract paused or killed\""
+                        },
+                        "value": "Error: contract paused or killed"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_2cf29bbca55fdaab4ca1bb85596a0b2d1b0a4bd3ee3de4f4a9d9c5cecf336636",
+                          "typeString": "literal_string \"Error: contract paused or killed\""
+                        }
+                      ],
+                      "id": 440,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        541,
+                        542
+                      ],
+                      "referencedDeclaration": 542,
+                      "src": "195:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 446,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "195:66:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 447,
+                  "nodeType": "ExpressionStatement",
+                  "src": "195:66:4"
+                },
+                {
+                  "id": 448,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "271:1:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 450,
+            "name": "onlyIfActive",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 439,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "185:0:4"
+            },
+            "src": "163:116:4",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 461,
+              "nodeType": "Block",
+              "src": "307:88:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_State_$436",
+                          "typeString": "enum States.State"
+                        },
+                        "id": 456,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 453,
+                          "name": "state",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 438,
+                          "src": "325:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 454,
+                            "name": "State",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 436,
+                            "src": "334:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                              "typeString": "type(enum States.State)"
+                            }
+                          },
+                          "id": 455,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "Paused",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "334:12:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "src": "325:21:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4572726f723a20636f6e7472616374206e6f7420706175736564",
+                        "id": 457,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "348:28:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_ee3e33039e7389f863fd9c56cfddbbbb7019e2446380949a1dd51e39af2f1e73",
+                          "typeString": "literal_string \"Error: contract not paused\""
+                        },
+                        "value": "Error: contract not paused"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_ee3e33039e7389f863fd9c56cfddbbbb7019e2446380949a1dd51e39af2f1e73",
+                          "typeString": "literal_string \"Error: contract not paused\""
+                        }
+                      ],
+                      "id": 452,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        541,
+                        542
+                      ],
+                      "referencedDeclaration": 542,
+                      "src": "317:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 458,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "317:60:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 459,
+                  "nodeType": "ExpressionStatement",
+                  "src": "317:60:4"
+                },
+                {
+                  "id": 460,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "387:1:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 462,
+            "name": "onlyIfPaused",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 451,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "307:0:4"
+            },
+            "src": "285:110:4",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 470,
+              "nodeType": "Block",
+              "src": "422:37:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 468,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 465,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "432:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 466,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "440:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 467,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "440:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "432:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 469,
+                  "nodeType": "ExpressionStatement",
+                  "src": "432:20:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 471,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 463,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "412:2:4"
+            },
+            "returnParameters": {
+              "id": 464,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "422:0:4"
+            },
+            "scope": 523,
+            "src": "401:58:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 487,
+              "nodeType": "Block",
+              "src": "534:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 483,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 480,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "544:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 481,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "552:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 482,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Paused",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "552:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "544:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 484,
+                  "nodeType": "ExpressionStatement",
+                  "src": "544:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 485,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "581:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 479,
+                  "id": 486,
+                  "nodeType": "Return",
+                  "src": "574:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 488,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 474,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 473,
+                  "name": "onlyIfActive",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 450,
+                  "src": "497:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "497:12:4"
+              },
+              {
+                "arguments": null,
+                "id": 476,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 475,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "510:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "510:9:4"
+              }
+            ],
+            "name": "pauseContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "487:2:4"
+            },
+            "returnParameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 478,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 488,
+                  "src": "528:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 477,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "528:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "527:6:4"
+            },
+            "scope": 523,
+            "src": "465:127:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 504,
+              "nodeType": "Block",
+              "src": "668:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 500,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 497,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "678:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 498,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "686:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 499,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "686:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "678:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 501,
+                  "nodeType": "ExpressionStatement",
+                  "src": "678:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 502,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "715:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 496,
+                  "id": 503,
+                  "nodeType": "Return",
+                  "src": "708:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 505,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 491,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 490,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "631:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "631:9:4"
+              },
+              {
+                "arguments": null,
+                "id": 493,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 492,
+                  "name": "onlyIfPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 462,
+                  "src": "641:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "641:12:4"
+              }
+            ],
+            "name": "resumeContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 489,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "621:2:4"
+            },
+            "returnParameters": {
+              "id": 496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 495,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 505,
+                  "src": "662:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 494,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "662:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "661:6:4"
+            },
+            "scope": 523,
+            "src": "598:128:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 521,
+              "nodeType": "Block",
+              "src": "801:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 517,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 514,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "811:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 515,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "819:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 516,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Killed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "819:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "811:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 518,
+                  "nodeType": "ExpressionStatement",
+                  "src": "811:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 519,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "848:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 513,
+                  "id": 520,
+                  "nodeType": "Return",
+                  "src": "841:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 522,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 508,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 507,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "763:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "763:9:4"
+              },
+              {
+                "arguments": null,
+                "id": 510,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 509,
+                  "name": "onlyIfPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 462,
+                  "src": "773:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "773:12:4"
+              }
+            ],
+            "name": "killContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 506,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "753:2:4"
+            },
+            "returnParameters": {
+              "id": 513,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 512,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "795:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 511,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "795:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "794:6:4"
+            },
+            "scope": 523,
+            "src": "732:127:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 524,
+        "src": "59:803:4"
+      }
+    ],
+    "src": "0:863:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/miguelsoares/Projects/Training/Blockchain/b9Labs/Splitter/contracts/States.sol",
+    "exportedSymbols": {
+      "States": [
+        523
+      ]
+    },
+    "id": 524,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 429,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:4"
+      },
+      {
+        "absolutePath": "/Users/miguelsoares/Projects/Training/Blockchain/b9Labs/Splitter/contracts/Ownable.sol",
+        "file": "./Ownable.sol",
+        "id": 430,
+        "nodeType": "ImportDirective",
+        "scope": 524,
+        "sourceUnit": 166,
+        "src": "34:23:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 431,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 165,
+              "src": "78:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$165",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 432,
+            "nodeType": "InheritanceSpecifier",
+            "src": "78:7:4"
+          }
+        ],
+        "contractDependencies": [
+          165
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 523,
+        "linearizedBaseContracts": [
+          523,
+          165
+        ],
+        "name": "States",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "States.State",
+            "id": 436,
+            "members": [
+              {
+                "id": 433,
+                "name": "Active",
+                "nodeType": "EnumValue",
+                "src": "109:6:4"
+              },
+              {
+                "id": 434,
+                "name": "Paused",
+                "nodeType": "EnumValue",
+                "src": "117:6:4"
+              },
+              {
+                "id": 435,
+                "name": "Killed",
+                "nodeType": "EnumValue",
+                "src": "125:6:4"
+              }
+            ],
+            "name": "State",
+            "nodeType": "EnumDefinition",
+            "src": "97:35:4"
+          },
+          {
+            "constant": false,
+            "id": 438,
+            "name": "state",
+            "nodeType": "VariableDeclaration",
+            "scope": 523,
+            "src": "137:19:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_State_$436",
+              "typeString": "enum States.State"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 437,
+              "name": "State",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 436,
+              "src": "137:5:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_State_$436",
+                "typeString": "enum States.State"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 449,
+              "nodeType": "Block",
+              "src": "185:94:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_State_$436",
+                          "typeString": "enum States.State"
+                        },
+                        "id": 444,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 441,
+                          "name": "state",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 438,
+                          "src": "203:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 442,
+                            "name": "State",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 436,
+                            "src": "212:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                              "typeString": "type(enum States.State)"
+                            }
+                          },
+                          "id": 443,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "Active",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "212:12:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "src": "203:21:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4572726f723a20636f6e747261637420706175736564206f72206b696c6c6564",
+                        "id": 445,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "226:34:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_2cf29bbca55fdaab4ca1bb85596a0b2d1b0a4bd3ee3de4f4a9d9c5cecf336636",
+                          "typeString": "literal_string \"Error: contract paused or killed\""
+                        },
+                        "value": "Error: contract paused or killed"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_2cf29bbca55fdaab4ca1bb85596a0b2d1b0a4bd3ee3de4f4a9d9c5cecf336636",
+                          "typeString": "literal_string \"Error: contract paused or killed\""
+                        }
+                      ],
+                      "id": 440,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        541,
+                        542
+                      ],
+                      "referencedDeclaration": 542,
+                      "src": "195:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 446,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "195:66:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 447,
+                  "nodeType": "ExpressionStatement",
+                  "src": "195:66:4"
+                },
+                {
+                  "id": 448,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "271:1:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 450,
+            "name": "onlyIfActive",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 439,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "185:0:4"
+            },
+            "src": "163:116:4",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 461,
+              "nodeType": "Block",
+              "src": "307:88:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_State_$436",
+                          "typeString": "enum States.State"
+                        },
+                        "id": 456,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 453,
+                          "name": "state",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 438,
+                          "src": "325:5:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 454,
+                            "name": "State",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 436,
+                            "src": "334:5:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                              "typeString": "type(enum States.State)"
+                            }
+                          },
+                          "id": 455,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "Paused",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "334:12:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_State_$436",
+                            "typeString": "enum States.State"
+                          }
+                        },
+                        "src": "325:21:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4572726f723a20636f6e7472616374206e6f7420706175736564",
+                        "id": 457,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "348:28:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_ee3e33039e7389f863fd9c56cfddbbbb7019e2446380949a1dd51e39af2f1e73",
+                          "typeString": "literal_string \"Error: contract not paused\""
+                        },
+                        "value": "Error: contract not paused"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_ee3e33039e7389f863fd9c56cfddbbbb7019e2446380949a1dd51e39af2f1e73",
+                          "typeString": "literal_string \"Error: contract not paused\""
+                        }
+                      ],
+                      "id": 452,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        541,
+                        542
+                      ],
+                      "referencedDeclaration": 542,
+                      "src": "317:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 458,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "317:60:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 459,
+                  "nodeType": "ExpressionStatement",
+                  "src": "317:60:4"
+                },
+                {
+                  "id": 460,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "387:1:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 462,
+            "name": "onlyIfPaused",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 451,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "307:0:4"
+            },
+            "src": "285:110:4",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 470,
+              "nodeType": "Block",
+              "src": "422:37:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 468,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 465,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "432:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 466,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "440:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 467,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "440:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "432:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 469,
+                  "nodeType": "ExpressionStatement",
+                  "src": "432:20:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 471,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 463,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "412:2:4"
+            },
+            "returnParameters": {
+              "id": 464,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "422:0:4"
+            },
+            "scope": 523,
+            "src": "401:58:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 487,
+              "nodeType": "Block",
+              "src": "534:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 483,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 480,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "544:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 481,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "552:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 482,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Paused",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "552:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "544:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 484,
+                  "nodeType": "ExpressionStatement",
+                  "src": "544:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 485,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "581:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 479,
+                  "id": 486,
+                  "nodeType": "Return",
+                  "src": "574:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 488,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 474,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 473,
+                  "name": "onlyIfActive",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 450,
+                  "src": "497:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "497:12:4"
+              },
+              {
+                "arguments": null,
+                "id": 476,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 475,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "510:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "510:9:4"
+              }
+            ],
+            "name": "pauseContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "487:2:4"
+            },
+            "returnParameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 478,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 488,
+                  "src": "528:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 477,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "528:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "527:6:4"
+            },
+            "scope": 523,
+            "src": "465:127:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 504,
+              "nodeType": "Block",
+              "src": "668:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 500,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 497,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "678:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 498,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "686:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 499,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "686:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "678:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 501,
+                  "nodeType": "ExpressionStatement",
+                  "src": "678:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 502,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "715:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 496,
+                  "id": 503,
+                  "nodeType": "Return",
+                  "src": "708:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 505,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 491,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 490,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "631:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "631:9:4"
+              },
+              {
+                "arguments": null,
+                "id": 493,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 492,
+                  "name": "onlyIfPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 462,
+                  "src": "641:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "641:12:4"
+              }
+            ],
+            "name": "resumeContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 489,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "621:2:4"
+            },
+            "returnParameters": {
+              "id": 496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 495,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 505,
+                  "src": "662:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 494,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "662:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "661:6:4"
+            },
+            "scope": 523,
+            "src": "598:128:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 521,
+              "nodeType": "Block",
+              "src": "801:58:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 517,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 514,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 438,
+                      "src": "811:5:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 515,
+                        "name": "State",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 436,
+                        "src": "819:5:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_State_$436_$",
+                          "typeString": "type(enum States.State)"
+                        }
+                      },
+                      "id": 516,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Killed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "819:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_State_$436",
+                        "typeString": "enum States.State"
+                      }
+                    },
+                    "src": "811:20:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_State_$436",
+                      "typeString": "enum States.State"
+                    }
+                  },
+                  "id": 518,
+                  "nodeType": "ExpressionStatement",
+                  "src": "811:20:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 519,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "848:4:4",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 513,
+                  "id": 520,
+                  "nodeType": "Return",
+                  "src": "841:11:4"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 522,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 508,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 507,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 99,
+                  "src": "763:9:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "763:9:4"
+              },
+              {
+                "arguments": null,
+                "id": 510,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 509,
+                  "name": "onlyIfPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 462,
+                  "src": "773:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "773:12:4"
+              }
+            ],
+            "name": "killContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 506,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "753:2:4"
+            },
+            "returnParameters": {
+              "id": 513,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 512,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "795:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 511,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "795:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "794:6:4"
+            },
+            "scope": 523,
+            "src": "732:127:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 524,
+        "src": "59:803:4"
+      }
+    ],
+    "src": "0:863:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-03-12T16:23:06.168Z",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "return": "true if `msg.sender` is the owner of the contract."
+      },
+      "owner()": {
+        "return": "the address of the owner."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      }
+    }
+  }
+}
