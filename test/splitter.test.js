@@ -5,15 +5,19 @@ contract('Splitter', accounts => {
   const accountOne = accounts[1];
   const accountTwo = accounts[2];
   let amount = 10000000000000000000;
-  let initState = 0;
+  const InitStates = {
+    Active: 0,
+    Paused: 1,
+    Killed: 2
+  };
 
   beforeEach(async () => {
-    splitterInstance = await Splitter.new(initState, {from: accountSender});
+    splitterInstance = await Splitter.new(InitStates["Active"], {from: accountSender});
   })
 
 
   it('Deploys successfully', async () => {
-    let address = await splitterInstance.address;
+    const address = await splitterInstance.address;
     assert.notEqual(address, 0x0);
     assert.notEqual(address, '');
     assert.notEqual(address, null);
@@ -22,7 +26,7 @@ contract('Splitter', accounts => {
 
 
   it('Should set an owner', async () => {
-    assert.strictEqual(await splitterInstance._owner.call(), accountSender);
+    assert.strictEqual(await splitterInstance.getOwner.call(), accountSender);
   })
 
 
@@ -66,7 +70,7 @@ contract('Splitter', accounts => {
   })
 
 
-  it('Should check the account balance', async() => {
+  it('Should check the owed balances', async() => {
     await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: amount});
     const amountToSend = amount/2;
 
@@ -76,54 +80,54 @@ contract('Splitter', accounts => {
 
 
   it('Should retrieve the owed balances', async () => {
-    await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: amount});
-    const amountToSend = amount/2;
+    await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
+
+    let accountOneFunds = await splitterInstance.owedBalances.call(accountOne);
+    let accountTwoFunds = await splitterInstance.owedBalances.call(accountTwo);
     
-    assert.equal(await splitterInstance.owedBalances(accountOne), amountToSend);
-    assert.equal(await splitterInstance.owedBalances(accountTwo), amountToSend);
+    assert.strictEqual(accountOneFunds.toString(10), '250');
+    assert.strictEqual(accountTwoFunds.toString(10), '250');
 
     await splitterInstance.retrieve({from: accountOne});
     await splitterInstance.retrieve({from: accountTwo});
 
-    assert.equal(await splitterInstance.owedBalances(accountOne), 0);
-    assert.equal(await splitterInstance.owedBalances(accountTwo), 0);
+    let accountOneFundsReset = await splitterInstance.owedBalances.call(accountOne);
+    let accountTwoFundsReset = await splitterInstance.owedBalances.call(accountTwo);
+
+    assert.strictEqual(accountOneFundsReset.toString(10), '0');
+    assert.strictEqual(accountTwoFundsReset.toString(10), '0');
   })
 
 
-  it('Should confirm that the withdrawn was successful', async() => {
+  it('Should confirm that the msg.sender got the money', async() => {
     await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: amount});
     const amountToSend = amount/2;
 
-    let initialBalance = await web3.eth.getBalance(accountOne);
-    console.log("initialBalance " + initialBalance);
+    const initialBalance = await web3.eth.getBalance(accountOne);
 
     assert.equal(await splitterInstance.owedBalances(accountOne), amountToSend);
 
-    let retrieved = await splitterInstance.retrieve({from: accountOne});
-    console.log("retrieved " + retrieved.receipt);
+    let tx = await splitterInstance.retrieve({from: accountOne});
 
-    let amountRetrieved = await retrieved.receipt.logs[0].args.amount;
-    console.log("amountRetrieved " + amountRetrieved.toString(10));
+    let amountRetrieved = await tx.receipt.logs[0].args.amount;
 
-    let amountGasUsed = await retrieved.receipt.gasUsed;
+    let amountGasUsed = await tx.receipt.gasUsed;
 
-    let price = await web3.eth.getTransaction(retrieved.receipt.logs[0].transactionHash);
-    console.log(price.gasPrice.toString(10));
+    let price = await web3.eth.getTransaction(tx.receipt.logs[0].transactionHash);
 
-    let gasCost = amountGasUsed * price.gasPrice;
-    console.log("gasCost " + gasCost);
+    let gasCost = -1 * amountGasUsed * price.gasPrice;
 
     let finalBalance = await web3.eth.getBalance(accountOne);
-    console.log("finalBalance " + finalBalance);
 
-    let expected = finalBalance - initialBalance + gasCost;
-    console.log(expected);
+    let expectedFinalBalance = web3.utils.toBN(initialBalance).add(web3.utils.toBN(gasCost)).add(web3.utils.toBN(amountToSend));
 
-    assert.strictEqual(expected.toString(10), amountToSend.toString(10));
-
+    assert.strictEqual(expectedFinalBalance.toString(10), finalBalance.toString(10));
   })
 
+
   it('Should emit event LogEtherRetrieved correctly', async() => {
+    await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
+
     let retrieved = await splitterInstance.retrieve({from: accountOne});
 
     assert.strictEqual(retrieved.logs.length, 1);
@@ -133,6 +137,6 @@ contract('Splitter', accounts => {
 
     assert.strictEqual(logEtherRetrievedEvent.event, 'LogEtherRetrieved');
     assert.strictEqual(logEtherRetrievedEvent.args.caller, accountOne);
-    assert.strictEqual(logEtherRetrievedEvent.args.amount.toString(10), '0');
+    assert.strictEqual(logEtherRetrievedEvent.args.amount.toString(10), '250');
   })
 });

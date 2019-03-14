@@ -13,7 +13,7 @@ contract Splitter is States {
 	event LogSplit(address indexed caller, address indexed address1, address indexed address2, uint amount);
 	event LogEtherRetrieved(address indexed caller, uint amount);
 
-	constructor(uint initState) public States(initState) {}
+	constructor(State initState) public States(initState) {}
 	
 	function splitBalance(address addr1, address addr2) onlyIfActive public payable {
 		require (msg.value > 0);
@@ -31,9 +31,8 @@ contract Splitter is States {
 	}
 	
 	function retrieve() onlyIfActive public {
-	    require (owedBalances[msg.sender] > 0);
-
 		uint amount = owedBalances[msg.sender];
+	    require (amount > 0);
 
 		owedBalances[msg.sender] = 0;
 		emit LogEtherRetrieved(msg.sender, amount);

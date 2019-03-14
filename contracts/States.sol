@@ -22,7 +22,7 @@ contract States is Ownable {
         _;
     }
 
-    constructor(uint initState) public {
+    constructor(State initState) public {
         require (State(initState) != State.Killed);
         state = State(initState);
     }
