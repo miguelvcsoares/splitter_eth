@@ -17,7 +17,7 @@ contract('States', accounts => {
 			statesActiveInstance = await States.new(InitStates["Active"], {from: accountSender});
 		})
 
-		it('Should check the active contract state', function() {
+		it('Should check the active contract state', async() => {
 			let currentState = await statesActiveInstance.getState();
 			assert.strictEqual(currentState.toString(10), '0');
 		})
@@ -37,8 +37,8 @@ contract('States', accounts => {
 			
 			let logPausedContractEvent = paused.receipt.logs[0];
 
-			assert.strictEqual(logEtherRetrievedEvent.event, 'LogPausedContract');
-			assert.strictEqual(logEtherRetrievedEvent.args.caller, accountSender);
+			assert.strictEqual(logPausedContractEvent.event, 'LogPausedContract');
+			assert.strictEqual(logPausedContractEvent.args.caller, accountSender);
 		})
 
 	    it("Should reject pause from a non-owner", async () => {
@@ -73,7 +73,7 @@ contract('States', accounts => {
 		})
 
 		it('Should emit event LogResumeContract correctly', async() => {
-			let resumed = await statesActiveInstance.resumeContract({from: accountSender});
+			let resumed = await statesPausedInstance.resumeContract({from: accountSender});
 
 			assert.strictEqual(resumed.logs.length, 1);
 			assert.strictEqual(resumed.receipt.logs.length, 1);
@@ -98,7 +98,7 @@ contract('States', accounts => {
 		})
 
 		it('Should emit event LogKilledContract correctly', async() => {
-			let killed = await statesActiveInstance.killContract({from: accountSender});
+			let killed = await statesPausedInstance.killContract({from: accountSender});
 
 			assert.strictEqual(killed.logs.length, 1);
 			assert.strictEqual(killed.receipt.logs.length, 1);

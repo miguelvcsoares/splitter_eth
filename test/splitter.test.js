@@ -46,16 +46,14 @@ contract('Splitter', accounts => {
 
     it('Should split an uneven number of ether correctly', async () => {
       await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 5});
-      const amountToSend = amount/2;
 
       let accountOneFunds = await splitterInstance.owedBalances.call(accountOne);
 
       let accountTwoFunds = await splitterInstance.owedBalances.call(accountTwo);
 
-      assert.strictEqual(accountOneFunds.toString(10), amountToSend.toString(10), "Half wasn't in the first account");
-      assert.strictEqual(accountTwoFunds.toString(10), amountToSend.toString(10), "Half wasn't in the second account");
+      assert.strictEqual(accountOneFunds.toString(10), '3', "Half wasn't in the first account");
+      assert.strictEqual(accountTwoFunds.toString(10), '2', "Half wasn't in the second account");
     })
-
 
     it('Should reject split to the accountSender', async() => {
       await expectedException(async() => {
@@ -66,23 +64,6 @@ contract('Splitter', accounts => {
     it('Should reject a split without value', async () => {
       await expectedException(async() => {
         await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 0});
-    })
-
-    it('Should reject a split without accountOne address', async() => {
-      await expectedException(async() => {
-        await splitterInstance.splitBalance(address(0), accountTwo, {from: accountSender, value: 5});
-      })
-    })
-
-    it('Should reject a split without accountTwo address', async() => {
-      await expectedException(async() => {
-        await splitterInstance.splitBalance(accountOne, address(0), {from: accountSender, value: 5});
-      })
-    })
-
-    it('Should reject a split without accountSender address', async() => {
-      await expectedException(async() => {
-        await splitterInstance.splitBalance(accountOne, accountTwo, {from: address(0)});
       })
     })
 
@@ -205,7 +186,7 @@ contract('Splitter', accounts => {
         let tx1 = await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
 
         let accountOneBalance = await splitterInstance.owedBalances.call(accountOne);
-        assert.strictEqual(accountOneBalance.toString(10), '25');
+        assert.strictEqual(accountOneBalance.toString(10), '250');
 
         await splitterInstance.pauseContract({from: accountSender});
 
