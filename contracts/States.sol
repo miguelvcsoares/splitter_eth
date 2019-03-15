@@ -27,6 +27,11 @@ contract States is Ownable {
         state = State(initState);
     }
 
+    function getState() public view returns (uint) {
+        return uint(state);
+    }
+    
+
     function pauseContract() public onlyIfActive onlyOwner returns(bool) {
         state = State.Paused;
 
