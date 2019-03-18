@@ -27,8 +27,8 @@ contract States is Ownable {
         state = State(initState);
     }
 
-    function getState() public view returns (uint) {
-        return uint(state);
+    function getState() public view returns (State) {
+        return State(state);
     }
     
 

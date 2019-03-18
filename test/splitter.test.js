@@ -13,8 +13,8 @@ contract('Splitter', accounts => {
   };
 
   describe("Testing active contract", function() {
-    beforeEach(async () => {
-      splitterInstance = await Splitter.new(InitStates["Active"], {from: accountSender});
+    beforeEach('deploy new', async () => {
+      splitterInstance = await Splitter.new(InitStates.Active, {from: accountSender});
     })
 
 
@@ -71,9 +71,9 @@ contract('Splitter', accounts => {
       let split = await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: amount});
 
       assert.strictEqual(split.logs.length, 1);
-      assert.strictEqual(split.receipt.logs.length, 1);
+      assert.strictEqual(split.logs.length, 1);
 
-      let logSplitEvent = split.receipt.logs[0];
+      let logSplitEvent = split.logs[0];
 
       assert.strictEqual(logSplitEvent.event, 'LogSplit');
       assert.strictEqual(logSplitEvent.args.caller, accountSender);
@@ -93,12 +93,6 @@ contract('Splitter', accounts => {
     it('Should retrieve the owed balances', async () => {
       await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
 
-      let accountOneFunds = await splitterInstance.owedBalances.call(accountOne);
-      let accountTwoFunds = await splitterInstance.owedBalances.call(accountTwo);
-      
-      assert.strictEqual(accountOneFunds.toString(10), '250');
-      assert.strictEqual(accountTwoFunds.toString(10), '250');
-
       await splitterInstance.retrieve({from: accountOne});
       await splitterInstance.retrieve({from: accountTwo});
 
@@ -117,26 +111,20 @@ contract('Splitter', accounts => {
       const initialBalanceOne = await web3.eth.getBalance(accountOne);
       const initialBalanceTwo = await web3.eth.getBalance(accountTwo);
 
-      let accountOneBalance = await splitterInstance.owedBalances.call(accountOne);
-      let accountTwoBalance = await splitterInstance.owedBalances.call(accountTwo);
+      const tx1 = await splitterInstance.retrieve({from: accountOne});
+      const tx2 = await splitterInstance.retrieve({from: accountTwo});
 
-      assert.strictEqual(accountOneBalance.toString(10), amountToSend.toString(10));
-      assert.strictEqual(accountTwoBalance.toString(10), amountToSend.toString(10));
-
-      let tx1 = await splitterInstance.retrieve({from: accountOne});
-      let tx2 = await splitterInstance.retrieve({from: accountTwo});
-
-      let amountRetrievedOne = await tx1.receipt.logs[0].args.amount;
-      let amountRetrievedTwo = await tx2.receipt.logs[0].args.amount;
+      let amountRetrievedOne = await tx1.logs[0].args.amount;
+      let amountRetrievedTwo = await tx2.logs[0].args.amount;
 
       let amountGasUsedOne = await tx1.receipt.gasUsed;
       let amountGasUsedTwo = await tx2.receipt.gasUsed;
 
-      let priceOne = await web3.eth.getTransaction(tx1.receipt.logs[0].transactionHash);
-      let priceTwo = await web3.eth.getTransaction(tx2.receipt.logs[0].transactionHash);
+      let txOne = await web3.eth.getTransaction(tx1.logs[0].transactionHash);
+      let txTwo = await web3.eth.getTransaction(tx2.logs[0].transactionHash);
 
-      let gasCostOne = amountGasUsedOne * priceOne.gasPrice;
-      let gasCostTwo = amountGasUsedTwo * priceTwo.gasPrice;
+      let gasCostOne = amountGasUsedOne * txOne.gasPrice;
+      let gasCostTwo = amountGasUsedTwo * txTwo.gasPrice;
 
       let finalBalanceOne = await web3.eth.getBalance(accountOne);
       let finalBalanceTwo = await web3.eth.getBalance(accountTwo);
@@ -161,19 +149,19 @@ contract('Splitter', accounts => {
       let retrieved = await splitterInstance.retrieve({from: accountOne});
 
       assert.strictEqual(retrieved.logs.length, 1);
-      assert.strictEqual(retrieved.receipt.logs.length, 1);
+      assert.strictEqual(retrieved.logs.length, 1);
 
-      let logEtherRetrievedEvent = retrieved.receipt.logs[0];
+      let logEtherRetrievedEvent = retrieved.logs[0];
 
       assert.strictEqual(logEtherRetrievedEvent.event, 'LogEtherRetrieved');
       assert.strictEqual(logEtherRetrievedEvent.args.caller, accountOne);
       assert.strictEqual(logEtherRetrievedEvent.args.amount.toString(10), '250');
     })
-  })
+  });
 
   describe('Testing paused contract', function() {
-    beforeEach(async () => {
-      splitterPausedInstance = await Splitter.new(InitStates["Paused"], {from: accountSender});      
+    beforeEach('deploy new', async () => {
+      splitterPausedInstance = await Splitter.new(InitStates.Paused, {from: accountSender});      
     })
 
     it('Should not allow to split in a paused state', async () => {
@@ -185,14 +173,30 @@ contract('Splitter', accounts => {
     it('Should not allow to retrieve in a paused state', async () => {
         let tx1 = await splitterInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
 
-        let accountOneBalance = await splitterInstance.owedBalances.call(accountOne);
-        assert.strictEqual(accountOneBalance.toString(10), '250');
-
         await splitterInstance.pauseContract({from: accountSender});
 
         await expectedException(async() => {
           await splitterPausedInstance.retrieve({from: accountOne});
         })
     })
-  })    
+  });
+
+  describe('Testing killed contract', function(){
+    beforeEach('deploy new', async () => {
+      splitterPausedInstance = await Splitter.new(InitStates.Paused, {from: accountSender});
+      await splitterPausedInstance.killContract({from: accountSender});
+    })
+
+    it('Should not allow to split in a killed state', async () => {
+      await expectedException(async() => {
+        await splitterPausedInstance.splitBalance(accountOne, accountTwo, {from: accountSender, value: 500});
+      })
+    })
+
+    it('Should not allow to retrieve in a killed state', async () => {
+      await expectedException(async() => {
+        await splitterPausedInstance.retrieve({from: accountOne});
+      })
+    })
+  });
 });

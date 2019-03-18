@@ -3,18 +3,17 @@ const expectedException = require("../utils/expected_exception_testRPC_and_geth.
 
 
 contract('States', accounts => {
-  const accountSender = accounts[0];
-  const accountOne = accounts[1];
-  const InitStates = {
-    Active: 0,
-    Paused: 1,
-    Killed: 2
-  };
-
+	const accountSender = accounts[0];
+	const accountOne = accounts[1];
+	const InitStates = {
+		Active: 0,
+		Paused: 1,
+		Killed: 2
+	};
 
 	describe('Testing active contract', function() {
-		beforeEach(async () => {
-			statesActiveInstance = await States.new(InitStates["Active"], {from: accountSender});
+		beforeEach("deploy new", async () => {
+			statesActiveInstance = await States.new(InitStates.Active, {from: accountSender});
 		})
 
 		it('Should check the active contract state', async() => {
@@ -35,24 +34,24 @@ contract('States', accounts => {
 			assert.strictEqual(paused.logs.length, 1);
 			assert.strictEqual(paused.receipt.logs.length, 1);
 			
-			let logPausedContractEvent = paused.receipt.logs[0];
+			let logPausedContractEvent = paused.logs[0];
 
 			assert.strictEqual(logPausedContractEvent.event, 'LogPausedContract');
 			assert.strictEqual(logPausedContractEvent.args.caller, accountSender);
 		})
 
-	    it("Should reject pause from a non-owner", async () => {
-	    	await expectedException(async() => {
-	    		await statesActiveInstance.pauseContract({from: accountOne});
-	    	})
+		it("Should reject pause from a non-owner", async () => {
+			await expectedException(async() => {
+				await statesActiveInstance.pauseContract({from: accountOne});
+			})
 		})
 
-	    it('Should reject kill from an active contract', async() => {
-	    	await expectedException(async() => {
-	    		await statesActiveInstance.killContract({from: accountSender});
-	    	})
-	    })
-	})
+		it('Should reject kill from an active contract', async() => {
+			await expectedException(async() => {
+				await statesActiveInstance.killContract({from: accountSender});
+			})
+		})
+	});
 
 	describe('Testing paused contract', function() {
 		beforeEach(async () => {
@@ -60,9 +59,9 @@ contract('States', accounts => {
 		})
 
 		it('Should reject a non-owner to unpause the contract', async () => {
-	    	await expectedException(async() => {
-	    		await statesPausedInstance.resumeContract({from: accountOne});
-	    	})
+			await expectedException(async() => {
+				await statesPausedInstance.resumeContract({from: accountOne});
+			})
 		})
 
 		it('Should unpause the contract', async () => {
@@ -85,9 +84,9 @@ contract('States', accounts => {
 		})
 
 		it('Should reject a non-owner to kill the contract', async () => {
-	    	await expectedException(async() => {
-	    		await statesPausedInstance.killContract({from: accountOne});
-	    	})
+			await expectedException(async() => {
+				await statesPausedInstance.killContract({from: accountOne});
+			})
 		})
 
 		it('Should kill the contract', async () => {
@@ -108,15 +107,13 @@ contract('States', accounts => {
 			assert.strictEqual(logKilledContractEvent.event, 'LogKilledContract');
 			assert.strictEqual(logKilledContractEvent.args.caller, accountSender);
 		})
-
-
-	})
+	});
 
 	describe('Testing killed contract', function() {
 		it('Should not be able to deploy a killed contract', async() => {
-	    	await expectedException(async() => {
-				await States.new(InitStates["Killed"], {from: accountSender});
-	    	})
+		await expectedException(async() => {
+				await States.new(InitStates.Killed, {from: accountSender});
+			})
 		})
-	})
+	});
 });
